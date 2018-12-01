@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="qilicua_v1" match-name="banquete"/>
+  <table-filter match-catalog="qilicua_v1" match-name="cat_tipo_plato"/>
+  <table-filter match-catalog="qilicua_v1" match-name="coctel"/>
+  <table-filter match-catalog="qilicua_v1" match-name="evento"/>
+  <table-filter match-catalog="qilicua_v1" match-name="ingredientes"/>
+  <table-filter match-catalog="qilicua_v1" match-name="platos"/>
+  <table-filter match-catalog="qilicua_v1" match-name="puestos"/>
+  <table-filter match-catalog="qilicua_v1" match-name="recena"/>
+  <table-filter match-catalog="qilicua_v1" match-name="relacion_banquete_plat"/>
+  <table-filter match-catalog="qilicua_v1" match-name="relacion_coctel_plat"/>
+  <table-filter match-catalog="qilicua_v1" match-name="relacion_platos_ingredientes"/>
+  <table-filter match-catalog="qilicua_v1" match-name="relacion_puestos_plat"/>
+  <table-filter match-catalog="qilicua_v1" match-name="relacion_recena_puestos"/>
+</hibernate-reverse-engineering>

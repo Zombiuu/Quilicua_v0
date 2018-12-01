@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<html>
+<h:head>
+	<!-- Google Icons -->
+
+	<link href="css/icon.css" rel="stylesheet" />
+
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="css/materialize.css"
+		media="screen,projection" />
+
+ 
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="js/materialize.js"></script>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<h:title>
+		<h4 class="center-align" style="color: #35404B; margin-top: 3%;">#{bundle['global.title']}</h4>
+	</h:title>
+
+
+</h:head>
+
+
+<h:body styleClass="grey lighten-3">
+	<h:form>
+		<script>
+			$(document).ready(function() {
+				$('.sidenav').sidenav();
+			});
+
+			$(document).ready(function() {
+				$('.tabs').tabs();
+			});
+			
+		</script>
+		<!-- Btn para abrir el sidenav -->
+		<a href="#" class="sidenav-trigger" data-target="menu-side"> <i><img
+				src="static/img/menu.png"
+				style="max-width: 25px; margin-left:15%; margin-top: -2%;" alt="#"></img></i>
+		</a>
+
+		<ul class="sidenav" id="menu-side">
+			<li>
+				<div class="user-view">
+
+					<div class="background" >
+						<div class="center-align">
+							<img src="static/img/logo.png" class="responsive-img"
+								style="max-width: 132px; padding-top: 1%;" alt="#"></img>
+						</div>
+					</div>
+
+
+					<a href=""> <span class="name white-text">
+							#{bundle['global.sidenav.bienvenido'].concat(',
+							').concat(loginBean.loginDTO.user)} </span>
+					</a> <a href=""> <span class="name white-text">
+							<div class="center-align">
+								<h:commandLink
+									style="padding-top:1%; padding-left:2%; padding-right:2%; padding-bottom:1%"
+									styleClass="orange btn btn-small" action="#{loginBean.logout}"
+									value="#{bundle['global.sidenav.btn.logout']}"></h:commandLink>
+							</div>
+					</span>
+					</a>
+
+				</div>
+
+
+			</li>
+
+
+		</ul>
+
+
+		<!-- FIN SIDEBAR -->
+
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<ul class="tabs">
+					<li class="tab col s6"><a class="active" href="#opcion1">#{bundle['global.tabpanel.tab.mostrar']}</a></li>
+					<li class="tab col s6"><a href="#opcion2">#{bundle['gobal.tabpanel.tab.calendario']}</a></li>
+
+				</ul>
+			</div>
+			<div id="opcion1" class="col s12">
+	<ui:include src="table.xhtml" />
+	
+	
+			
+
+
+			</div>
+			<div id="opcion2" class="col s12">Test 2</div>
+
+		</div>
+		
+	</h:form>
+
+
+
+
+</h:body>
+	</html>
+
+</ui:composition>
+
+
+

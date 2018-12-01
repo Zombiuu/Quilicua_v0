@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping resource="beans/model/CatTipoPlato.hbm.xml"/>
+        <mapping resource="beans/model/RelacionCoctelPlat.hbm.xml"/>
+        <mapping resource="beans/model/RelacionPuestosPlat.hbm.xml"/>
+        <mapping resource="beans/model/Coctel.hbm.xml"/>
+        <mapping resource="beans/model/Recena.hbm.xml"/>
+        <mapping resource="beans/model/Puestos.hbm.xml"/>
+        <mapping resource="beans/model/RelacionBanquetePlat.hbm.xml"/>
+        <mapping resource="beans/model/Banquete.hbm.xml"/>
+        <mapping resource="beans/model/RelacionRecenaPuestos.hbm.xml"/>
+        <mapping resource="beans/model/RelacionPlatosIngredientes.hbm.xml"/>
+        <mapping resource="beans/model/Platos.hbm.xml"/>
+        <mapping resource="beans/model/Evento.hbm.xml"/>
+        <mapping resource="beans/model/Ingredientes.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

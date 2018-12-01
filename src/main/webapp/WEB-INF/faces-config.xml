@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+    version="2.3">
+    <!-- Resolver para el funcionamiento de Spring -->
+	  <application>
+        <el-resolver>
+            org.springframework.web.jsf.el.SpringBeanFacesELResolver
+        </el-resolver>
+        <!-- Añadimos un bundle resources para los mensajes. La ruta la queramos
+        como queramos, parte siemrpe desde la carpeta resources que está en 
+        la carpeta main y acaba con el nombre del archivo sin su extensión .properties -->
+        <resource-bundle>
+		<base-name>bundle.es_messages</base-name>
+		<!-- Especificamos como queremos llamar a este messages desde
+		los xhtml, le llamamos bundle pero se puede llamar como queramos -->
+		<var>bundle</var>
+	   </resource-bundle>
+	   
+	   <!-- REGLAS DE NAVEGACIÓN  -->
+	  <navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>irPrincipal</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		</navigation-rule>
+		
+		<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>irGlobal</from-outcome>
+			<to-view-id>/global.xhtml</to-view-id>
+		</navigation-case>
+		</navigation-rule>
+		
+		
+		<navigation-rule>
+		<from-view-id>/global.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>irGlobal</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		</navigation-rule>
+	
+    </application>
+</faces-config>

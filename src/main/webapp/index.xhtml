@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<html>
+<h:head>
+
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="css/materialize.min.css"
+		media="screen,projection" />
+
+
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="js/materialize.min.js"></script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+
+
+
+</h:head>
+
+
+<h:body styleClass="grey lighten-3">
+	<script>
+	
+		$(document).ready(function() {
+			$('.carousel').carousel({
+				fullWidth : true,
+				duration:800
+			
+			});
+			autoplay();
+			function autoplay() {
+			    $('.carousel').carousel('next');
+			    setTimeout(autoplay, 3000);
+			}
+			
+		});
+	</script>
+	<div class="carousel carousel-slider">
+		<a href="#a!" class="carousel-item"><img class="responsive-img" style="opacity:0.6;filter:alpha(opacity=40);"
+			src="static/img/slider1.jpg" /></a> <a href="#b!" class="carousel-item" ><img
+			class="responsive-img" style="opacity:0.6;filter:alpha(opacity=40);" src="static/img/slider2.jpg" /></a> <a href="#c!"
+			class="carousel-item"><img class="responsive-img" style="opacity:0.6;filter:alpha(opacity=40);"
+			src="static/img/slider3.jpg" /></a> <a href="#d!" class="carousel-item"><img style="opacity:0.6;filter:alpha(opacity=40);"
+			class="responsive-img" src="static/img/slider4.jpg" /></a> <a href="#e!"
+			class="carousel-item"><img class="responsive-img" style="opacity:0.6;filter:alpha(opacity=40);"
+			src="static/img/slider5.jpg" /></a>
+
+
+
+		<div class="valign-wraper" id="login-page">
+
+			<div class="container">
+				<div class="center-align">
+					<div class="row">
+						<!-- Del total de 12 columnas, ocupamos 6 y dejamos a ambos lados 3 columnas de margen -->
+						<div class="col s6 offset-s3">
+							<div class="card" style="margin-top: 40%">
+								<div class="card-content">
+									<img class="responsive-img" style="max-width: 132px;"
+										src="static/img/logo.png" />
+									<div class="center-align">
+										<h:form id="login-form">
+											<!-- Para mostrar el mensaje de valdiación -->
+											<!-- Atributo stickly sirve para ocultar solo el mensaje. A false se oculta solo -->
+											<p:growl id="growl" showDetail="false" sticky="false"
+												life="3200" />
+											<!-- Usuario -->
+
+											<div class="row">
+												<div class="input-field col s12">
+													<p:outputLabel
+														value="#{bundle['index.login.form.lbl.user']}" />
+													<p:inputText id="txtUser"
+														value="#{loginBean.loginDTO.user}" required="true"
+														requiredMessage="#{bundle['index.login.form.required.user']}" />
+
+												</div>
+
+												<div class="input-field col s12">
+													<p:outputLabel
+														value="#{bundle['index.login.form.lbl.pass']}" />
+													<p:inputText type="password" id="txtPass"
+														value="#{loginBean.loginDTO.pass}" required="true"
+														requiredMessage="#{bundle['index.login.form.required.pass']}" />
+												</div>
+
+
+
+												<div class="col s12 input-field">
+													<h:commandLink
+														value="#{bundle['index.login.form.btn.lbl.login']}"
+														styleClass="btn btn-large"
+														action="#{loginBean.comprobarLogin}" />
+
+												</div>
+
+											</div>
+
+										</h:form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+</h:body>
+	</html>
+
+</ui:composition>
