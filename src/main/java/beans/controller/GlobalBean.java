@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
@@ -17,17 +18,19 @@ import org.springframework.stereotype.Component;
 
 import beans.dto.EventoDTO;
 import beans.service.EventoService;
+import utilities.NavigationResult;
 
 
-@Component
+
 @ManagedBean(name = "globalBean")
 @RequestScoped
 public class GlobalBean {
 	private EventoDTO eventoDTO;
 	private Logger logger;
 	private ArrayList<EventoDTO> arrEventoDTO;
-	@Autowired
-	@Qualifier("eventoService")
+	
+
+	@ManagedProperty(value="#{eventoService}")
 	private EventoService eventoService;
 
 	public GlobalBean() {
@@ -51,6 +54,10 @@ public class GlobalBean {
 		}
 		
 		
+	}
+	
+	public String irAministracion() {
+		return NavigationResult.IR_A_PAGINA_ADMINISTRACION;
 	}
 
 	public EventoDTO getEventoDTO() {

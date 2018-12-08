@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -19,13 +20,13 @@ import beans.service.GestionGlobalService;
 import utilities.NavigationResult;
 import utilities.SessionUtils;
 
-@Component
+
 @ManagedBean(name = "loginBean")
 @SessionScoped
 public class LoginBean {
 
-	@Autowired
-	@Qualifier("gestionGlobalService")
+	
+	@ManagedProperty(value= "#{gestionGlobalService}")
 	private GestionGlobalService gestGblService;
 
 	private LoginDTO loginDTO;

@@ -5,11 +5,12 @@ package beans.dao;
 import org.springframework.dao.DataAccessException;
 
 import beans.model.Login;
+import beans.model.Usuarios;
 
 
 
 public interface LoginDAO {
 	
-	Boolean validarUsernamePassword(Login login) throws DataAccessException;
+	Boolean validarUsernamePassword(Usuarios usuarios) throws DataAccessException;
 
 }

@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import beans.dto.EventoDTO;
-import beans.model.Evento;
+
 
 /**
  * Home object for domain model class Evento.
@@ -45,104 +45,24 @@ public class EventoHome extends HibernateDaoSupport implements EventoDAO{
 		setSessionFactory(factory);
 	}
 
-	public void persist(Evento transientInstance) {
-		log.debug("persisting Evento instance");
-		try {
-			getSessionFactory().getCurrentSession().persist(transientInstance);
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Evento instance) {
-		log.debug("attaching dirty Evento instance");
-		try {
-			getSessionFactory().getCurrentSession().saveOrUpdate(instance);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Evento instance) {
-		log.debug("attaching clean Evento instance");
-		try {
-			getSessionFactory().getCurrentSession().lock(instance, LockMode.NONE);
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void delete(Evento persistentInstance) {
-		log.debug("deleting Evento instance");
-		try {
-			getSessionFactory().getCurrentSession().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
-
-	public Evento merge(Evento detachedInstance) {
-		log.debug("merging Evento instance");
-		try {
-			Evento result = (Evento) getSessionFactory().getCurrentSession().merge(detachedInstance);
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public Evento findById(java.lang.Integer id) {
-		log.debug("getting Evento instance with id: " + id);
-		try {
-			Evento instance = (Evento) getSessionFactory().getCurrentSession().get("beans.model.Evento", id);
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
-			}
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExample(Evento instance) {
-		log.debug("finding Evento instance by example");
-		try {
-			List results = getSessionFactory().getCurrentSession().createCriteria("beans.model.Evento")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: " + results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
+	
 	
 	public ArrayList<EventoDTO> getTotalResult() throws DataAccessException{
 		 SQLQuery sql = null;
 		 ArrayList<EventoDTO> entries= null;
 	try {
-		  sql = getSessionFactory().getCurrentSession().createSQLQuery("SELECT evento.FECHA_ALTA as fechaAlta, evento.NOMBRE as nombre, evento.COMENSALES as comensales, evento.ENCARGADO as encargado FROM evento");
+		  sql = getSessionFactory().getCurrentSession().createSQLQuery("SELECT E.FECHA as fechaAlta, E.NOMBRE as nombre, E.RESPONSABLE as encargado, E.INV_TOTAL as comensales, F.NOMBRE as nombreFinca  FROM EVENTO E LEFT JOIN FINCAS  F ON E.FINCA = F.FINCAS_PK");
+		  StringBuffer query = null;
 		  sql.addScalar("fechaAlta",DateType.INSTANCE);
 		  sql.addScalar("nombre",StringType.INSTANCE);
 		  sql.addScalar("comensales",IntegerType.INSTANCE);
 		  sql.addScalar("encargado",StringType.INSTANCE);
+		  sql.addScalar("nombreFinca",StringType.INSTANCE);
+		  
 		  
 		  sql.setResultTransformer(Transformers.aliasToBean(EventoDTO.class));
 		 
-		    entries = (ArrayList<EventoDTO>) sql.list();
+		    entries =(ArrayList<EventoDTO>) sql.list() ;
 		    if(entries==null) {
 		    	entries = new ArrayList<EventoDTO>();
 		    }
@@ -155,6 +75,8 @@ public class EventoHome extends HibernateDaoSupport implements EventoDAO{
 		return entries;
 		
 	}
+
+	
 
 	
 }

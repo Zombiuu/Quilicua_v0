@@ -22,6 +22,7 @@ public class EventoDTO implements Serializable{
 	private Integer recenaFk;
 	private Integer coctelFk;
 	private Integer banqueteFk;
+	private String nombreFinca;
 	
 	public Integer getEventoPk() {
 		return eventoPk;
@@ -96,6 +97,14 @@ public class EventoDTO implements Serializable{
 	public void setBanqueteFk(Integer banqueteFk) {
 		this.banqueteFk = banqueteFk;
 	}
+	public String getNombreFinca() {
+		return nombreFinca;
+	}
+	public void setNombreFinca(String nombreFinca) {
+		this.nombreFinca = nombreFinca;
+	}
+	
+	
 	
 	
 

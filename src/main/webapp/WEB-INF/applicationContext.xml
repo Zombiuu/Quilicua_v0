@@ -38,9 +38,9 @@
 		<beans:property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
-			value="jdbc:mysql://localhost:3306/qilicua_v1" />
+			value="jdbc:mysql://ec2-18-224-110-235.us-east-2.compute.amazonaws.com:3306/quilicuabd" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="" />
+		<beans:property name="password" value="password" />
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
@@ -50,7 +50,37 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				
-				<beans:value>beans.model.Login</beans:value>
+				 <beans:value>beans.model.Usuarios</beans:value>
+				  <beans:value>beans.model.MateriasPrimas</beans:value>
+				   <beans:value>beans.model.Maquinaria</beans:value>
+				    <beans:value>beans.model.RelElaboracionesMateriasPrimas</beans:value>
+				     <beans:value>beans.model.RelAlergenosMateriasPrimas</beans:value>
+				     
+				     <beans:value>beans.model.Alergenos</beans:value>
+				     <beans:value>beans.model.CatConservaciones</beans:value>
+				     <beans:value>beans.model.CatTipoPlato</beans:value>
+				     <beans:value>beans.model.CatTurnos</beans:value>
+				     <beans:value>beans.model.Elaboraciones</beans:value>
+				     <beans:value>beans.model.Evento</beans:value>
+				     <beans:value>beans.model.Fincas</beans:value>
+				     <beans:value>beans.model.Menaje</beans:value>
+				     <beans:value>beans.model.Platos</beans:value>
+				     <beans:value>beans.model.Proporciones</beans:value>
+				      <beans:value>beans.model.Puestos</beans:value>
+				     <beans:value>beans.model.RelEventoMenaje</beans:value>
+				     <beans:value>beans.model.RelEventoPlatos</beans:value>
+				     <beans:value>beans.model.RelEventoPuestos</beans:value>
+				     <beans:value>beans.model.RelPlatosElaboraciones</beans:value>
+				     <beans:value>beans.model.RelPlatosMaquinaria</beans:value>
+				     <beans:value>beans.model.RelPlatosMenaje</beans:value>
+				     <beans:value>beans.model.RelPuestosElaboraciones</beans:value>
+				     <beans:value>beans.model.RelPuestosMaquinaria</beans:value>
+				     <beans:value>beans.model.RelPuestosMenaje</beans:value>
+				     
+				  
+				
+				
+				
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -68,14 +98,15 @@
 		name="personDAO" ref="personDAO"></beans:property> </beans:bean> -->
 
 
-	<beans:bean id="gestionGlobalService"
-		class="beans.service.GestionGlobalServiceImpl">
+	<!--  <beans:bean id="gestionGlobalService"
+		class="beans.service.GestionGlobalServiceImpl">-->
 
-	</beans:bean>
+	<!-- </beans:bean>
 
 	<beans:bean id="loginDAO" class="beans.dao.LoginDAOImpl">
 
 	</beans:bean>
+	-->
 
 	<tx:annotation-driven
 		transaction-manager="transactionManager" />

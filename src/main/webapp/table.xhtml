@@ -22,10 +22,11 @@
     
         <table id="myTable">
     <tr>
-        <th>Fecha alta</th>
+        <th>Fecha</th>
          <th>Nombre</th>
         <th>Comensales</th>
-        <th>Encargado</th>
+        <th>Responsable</th>
+         <th>Finca</th>
     </tr>
     <ui:repeat value="#{globalBean.arrEventoDTO}" var="evento">
     <tr>
@@ -33,6 +34,7 @@
         <td>#{evento.nombre}</td>
         <td>#{evento.comensales}</td>
         <td>#{evento.encargado}</td>
+         <td>#{evento.nombreFinca}</td>
     </tr>
     </ui:repeat>
 </table>

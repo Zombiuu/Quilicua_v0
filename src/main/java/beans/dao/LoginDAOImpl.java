@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import beans.model.Login;
+import beans.model.Usuarios;
 
 @Repository("loginDAO")
 @Transactional(readOnly = false, propagation = Propagation.SUPPORTS)
@@ -25,15 +26,16 @@ public class LoginDAOImpl extends HibernateDaoSupport implements LoginDAO {
 	}
 
 	@Override
-	public Boolean validarUsernamePassword(Login login) throws DataAccessException {
+	public Boolean validarUsernamePassword(Usuarios usuarios) throws DataAccessException {
 		boolean resultado = false;
 
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
+			
 			// Login resultado = (Login) session.get(Login.class, login.getUid());
-			Criteria cr = session.createCriteria(Login.class);
-			cr.add(Restrictions.eq("uname", login.getUname()));
-			cr.add(Restrictions.eq("password", login.getPassword()));
+			Criteria cr = session.createCriteria(Usuarios.class);
+			cr.add(Restrictions.eq("nombre", usuarios.getNombre()));
+			cr.add(Restrictions.eq("password", usuarios.getPassword()));
 			List resultadoBBDD = cr.list();
 			if (resultadoBBDD.size() == 1) {
 				resultado = true;
