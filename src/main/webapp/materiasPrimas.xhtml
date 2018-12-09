@@ -37,14 +37,14 @@
 
 <h:body styleClass="grey lighten-3">
 	<div class="row">
-		<form id="formMatPrima" class="col s12">
+		<h:form id="formMatPrima" class="col s12">
 			<div class="row">
 				<div class="input-field col s12">
 					<p:messages id="messages" showDetail="true" closable="true"
 					rendered="true">
 						<p:autoUpdate />
 					</p:messages>
-					<p:outputLabel value="{bundle['matprimas.form.nombre.lbl']}" />
+					<p:outputLabel value="#{bundle['matprimas.form.nombre.lbl']}" />
 					<p:inputText id="txtNombreMaterias" value="#{matPrimasBean.matPrimasDTO.nombre}" required="true"
 						requiredMessage="#{bundle['matprimas.form.nombre.requerido']}" 
 						rendered="true"/>
@@ -52,7 +52,7 @@
 				
 				</div>
 				<div class="col s12 input-field">
-					<p:commandLink process="formMatPrima" rendered="true" action="#{matPrimasBean.guardar}">
+					<p:commandLink  rendered="true" action="#{matPrimasBean.guardar}">
 					<p:outputLabel value="#{bundle['btn.guardar']}"></p:outputLabel>
 					
 					</p:commandLink>
@@ -60,7 +60,7 @@
 
 
 			</div>
-		</form>
+		</h:form>
 	</div>
 </h:body>
 	</html>

@@ -10,12 +10,13 @@ import javax.faces.context.FacesContext;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 import beans.dto.MatPrimasDTO;
 import beans.service.MatPrimasService;
 
 @ManagedBean(name = "matPrimasBean")
-@RequestScope
+@SessionScope
 public class MatPrimasBean {
 	private MatPrimasDTO matPrimasDTO;
 	private Logger logger;
@@ -48,5 +49,15 @@ public class MatPrimasBean {
 	public void setMatPrimasDTO(MatPrimasDTO matPrimasDTO) {
 		this.matPrimasDTO = matPrimasDTO;
 	}
+
+	public MatPrimasService getMatPrimasService() {
+		return matPrimasService;
+	}
+
+	public void setMatPrimasService(MatPrimasService matPrimasService) {
+		this.matPrimasService = matPrimasService;
+	}
+	
+	
 
 }

@@ -42,7 +42,7 @@ public class GlobalBean {
 	public void init() {
 		this.recuperarListaEventos();
 	}
-
+	
 	public void recuperarListaEventos() {
 		try {
 			arrEventoDTO=this.eventoService.obtenerEventos();
@@ -58,6 +58,10 @@ public class GlobalBean {
 	
 	public String irAministracion() {
 		return NavigationResult.IR_A_PAGINA_ADMINISTRACION;
+	}
+	
+	public String irMateriaPrimas() {
+		return NavigationResult.IR_A_MATERIAS_PRIMAS;
 	}
 
 	public EventoDTO getEventoDTO() {

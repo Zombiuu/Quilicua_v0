@@ -53,6 +53,14 @@
 			<to-view-id>/administracion.xhtml</to-view-id>
 		</navigation-case>
 		</navigation-rule>
+		
+		<navigation-rule>
+		<from-view-id>/administracion.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>irMateriasPrimas</from-outcome>
+			<to-view-id>/materiasPrimas.xhtml</to-view-id>
+		</navigation-case>
+		</navigation-rule>
 	
     </application>
 </faces-config>

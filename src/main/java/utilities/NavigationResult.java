@@ -1,4 +1,5 @@
 package utilities;
+
 /*
  * En esta clase estática
  *  se definen los String a retornar por lo métodos de los beans
@@ -6,10 +7,10 @@ package utilities;
  * faces-config.xml
  */
 public class NavigationResult {
-	//Regla de navegación de prueba
-	public static final String IR_A_PAGINA_GLOBAL="irGlobal";	
-	public static final String IR_A_PAGINA_PRINCIPAL="irPrincipal";
-	public static final String IR_A_PAGINA_ADMINISTRACION="irAdministracion";
-	
+	// Regla de navegación de prueba
+	public static final String IR_A_PAGINA_GLOBAL = "irGlobal";
+	public static final String IR_A_PAGINA_PRINCIPAL = "irPrincipal";
+	public static final String IR_A_PAGINA_ADMINISTRACION = "irAdministracion";
+	public static final String IR_A_MATERIAS_PRIMAS = "irMateriasPrimas";
 
 }

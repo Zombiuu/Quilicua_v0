@@ -33,6 +33,7 @@ public class MatPrimasServiceImpl implements MatPrimasService{
 	private MateriasPrimas mapearDTOaEntidad(MatPrimasDTO matPrimasDTO) {
 		MateriasPrimas materiasPrimas = new MateriasPrimas();
 		materiasPrimas.setNombre(matPrimasDTO.getNombre());
+		materiasPrimas.setBorrado("N");
 		return materiasPrimas;
 		
 	}
