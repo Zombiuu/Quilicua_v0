@@ -64,9 +64,9 @@
 					</div>
 
 
-					<a href=""> <span class="name white-text">
-							#{bundle['global.sidenav.bienvenido'].concat(',
-							').concat(loginBean.loginDTO.user)} </span>
+					 <a href=""> <span class="name white-text">
+						<!-- #{bundle['global.sidenav.bienvenido'].concat(',
+							').concat(loginBean.loginDTO.user)} -->	</span>
 					</a> <a href=""> <span class="name white-text">
 							<div class="center-align">
 								<h:commandLink
@@ -83,6 +83,8 @@
 
 			</li>
 				<li>
+			#{bundle['global.sidenav.bienvenido'].concat(',
+							').concat(loginBean.loginDTO.user)}
 					<h:commandLink action="#{globalBean.irAministracion}">
 						<span class="name white-ext">IR ADMINISTRACION</span>
 					</h:commandLink>

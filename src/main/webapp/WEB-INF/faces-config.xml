@@ -40,7 +40,7 @@
 		<navigation-rule>
 		<from-view-id>/global.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>irGlobal</from-outcome>
+			<from-outcome>irPrincipal</from-outcome>
 			<to-view-id>/index.xhtml</to-view-id>
 		</navigation-case>
 		</navigation-rule>
