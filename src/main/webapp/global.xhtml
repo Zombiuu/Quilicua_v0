@@ -83,8 +83,9 @@
 
 			</li>
 				<li>
-			#{bundle['global.sidenav.bienvenido'].concat(',
-							').concat(loginBean.loginDTO.user)}
+				<h:outputLabel value="#{bundle['global.sidenav.bienvenido'].concat(',
+							').concat(loginBean.loginDTO.user)}" style="margin-left:auto;"></h:outputLabel>
+			
 					<h:commandLink action="#{globalBean.irAministracion}">
 						<span class="name white-ext">IR ADMINISTRACION</span>
 					</h:commandLink>

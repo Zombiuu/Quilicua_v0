@@ -27,7 +27,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<h:title>
-		<h4 class="center-align" style="color: #35404B; margin-top: 3%;">ADMINISTRACION</h4>
+		<h4 class="center-align" style="color: #35404B; margin-top: 3%;">#{bundle['matprimas.titulo']}</h4>
 	</h:title>
 
 
@@ -38,12 +38,12 @@
 <h:body styleClass="grey lighten-3">
 	<div class="row">
 		<h:form id="formMatPrima" class="col s12">
-			<div class="row">
-				<div class="input-field col s12">
-					<p:messages id="messages" showDetail="true" closable="true"
+		<p:messages id="messages" showDetail="false" closable="true" 
 					rendered="true">
 						<p:autoUpdate />
 					</p:messages>
+			<div class="row">
+				<div class="input-field col s12">
 					<p:outputLabel value="#{bundle['matprimas.form.nombre.lbl']}" />
 					<p:inputText id="txtNombreMaterias" value="#{matPrimasBean.matPrimasDTO.nombre}" required="true"
 						requiredMessage="#{bundle['matprimas.form.nombre.requerido']}" 

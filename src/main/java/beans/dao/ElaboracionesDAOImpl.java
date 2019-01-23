@@ -16,52 +16,55 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import beans.dto.ElaboracionesDTO;
 import beans.dto.MateriasPrimasDTO;
-
+import beans.model.Elaboraciones;
 import beans.model.MateriasPrimas;
 
-@Repository("matPrimaDAO")
+@Repository("elaboracionesDAO")
 @Transactional(readOnly = false, propagation = Propagation.SUPPORTS)
-public class MatPrimaDAOImpl extends HibernateDaoSupport implements MatPrimaDAO {
-
-	
+public class ElaboracionesDAOImpl extends HibernateDaoSupport implements ElaboracionesDAO {
 
 	@Autowired
 	public void initSessionFactory(SessionFactory factory) {
 		setSessionFactory(factory);
-		
+
 	}
 
 	@Override
-	public void guardar(MateriasPrimas materiasPrimas) throws DataAccessException {
+	public Elaboraciones guardar(Elaboraciones elaboracion) throws DataAccessException {
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
-			session.saveOrUpdate(materiasPrimas);
+			
+			session.saveOrUpdate(elaboracion);
+			 
+			 
 		} catch (DataAccessException dae) {
 			throw new DataAccessException(dae.getMessage()) {
 			};
 		}
+		
+		return null;
 
 	}
 
 	@Override
-	public List<MateriasPrimasDTO> obtenerMatPrimas() throws DataAccessException {
+	public List<ElaboracionesDTO> obtenerElaboraciones() throws DataAccessException {
 		 SQLQuery sql = null;
-		 ArrayList<MateriasPrimasDTO> entries= null;
+		 ArrayList<ElaboracionesDTO> entries= null;
 	try {
-		  sql = getSessionFactory().getCurrentSession().createSQLQuery("SELECT MATERIAS_PRIMAS_PK as idMatPrima, "
-		  		+ "NOMBRE as nombre FROM MATERIAS_PRIMAS");
+		  sql = getSessionFactory().getCurrentSession().createSQLQuery("SELECT ELABORACIONES_PK as id, "
+		  		+ "NOMBRE as nombre FROM ELABORACIONES");
 		  StringBuffer query = null;
-		  sql.addScalar("idMatPrima",IntegerType.INSTANCE);
+		  sql.addScalar("id",IntegerType.INSTANCE);
 		  sql.addScalar("nombre",StringType.INSTANCE);
 		
 		  
-		  sql.setResultTransformer(Transformers.aliasToBean(MateriasPrimasDTO.class));
+		  sql.setResultTransformer(Transformers.aliasToBean(ElaboracionesDTO.class));
 	
-		    entries =(ArrayList<MateriasPrimasDTO>) sql.list() ;
+		    entries =(ArrayList<ElaboracionesDTO>) sql.list() ;
 		    if(entries==null) {
-		    	entries = new ArrayList<MateriasPrimasDTO>();
+		    	entries = new ArrayList<ElaboracionesDTO>();
 		    }
 	}catch(DataAccessException dae) {
 		throw new DataAccessException(dae.getMessage()) {
@@ -70,16 +73,15 @@ public class MatPrimaDAOImpl extends HibernateDaoSupport implements MatPrimaDAO 
 	}
 		
 		return entries;
-		
 	}
 
 	@Override
-	public MateriasPrimas obtenerMateriaPrima(Integer idMatPrima) throws DataAccessException {
-		MateriasPrimas resultado = null;
+	public Elaboraciones obtenerElaboracion(Integer idELaboracion) throws DataAccessException {
+		Elaboraciones resultado = null;
 		try {
 			Session session = this.getSessionFactory().getCurrentSession();
 			
-			 resultado = (MateriasPrimas) session.get(MateriasPrimas.class, idMatPrima);
+			 resultado = (Elaboraciones) session.get(Elaboraciones.class, idELaboracion);
 			
 
 		} catch (DataAccessException dae) {
@@ -89,5 +91,4 @@ public class MatPrimaDAOImpl extends HibernateDaoSupport implements MatPrimaDAO 
 		return resultado;
 	}
 
-	
 }

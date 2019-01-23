@@ -2,6 +2,7 @@ package beans.controller;
 
 import java.util.ResourceBundle;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -10,9 +11,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.service.spi.ServiceException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import beans.dto.LoginDTO;
@@ -34,6 +32,20 @@ public class LoginBean {
 	public LoginBean() {
 		this.loginDTO = new LoginDTO();
 	}
+	
+	/**
+	 * En este init se comprueba si hay sesión iniciado.
+	 * Si la hay entonces, navega directamente al global.xhtml y si no
+	 * te devuelve al login.xhtml
+	 */
+	@PostConstruct
+	public String init() {
+		if(SessionUtils.getSession()!=null) {
+			return this.paginar(true);
+		}else {
+			return this.paginar(false);
+		}
+	}
 
 	public String comprobarLogin() {
 		boolean validarLogin = false;
@@ -48,11 +60,11 @@ public class LoginBean {
 			
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", loginDTO.getUser());
-			retorno= NavigationResult.IR_A_PAGINA_GLOBAL;
+			retorno=this.paginar(true);
 		} else {
-			
+			retorno=this.paginar(false);
 			mensaje = new FacesMessage(FacesMessage.SEVERITY_WARN, ResourceBundle.getBundle("/bundle/es_messages").getString("index.login.eror.logueo"), "Usuario o contraseña erroneo.");
-			retorno= NavigationResult.IR_A_PAGINA_PRINCIPAL;
+			
 		}
 			
 		if(mensaje!=null && !StringUtils.isEmpty(mensaje)) {
@@ -62,6 +74,17 @@ public class LoginBean {
 		
 		return retorno;
 
+	}
+	
+	/**
+	 * metodo para entrar desde el login al global.xhtml o viceversa.
+	 */
+	private String paginar(boolean esValidada) {
+		if(esValidada) {
+			return NavigationResult.IR_A_PAGINA_GLOBAL;
+		}else{
+			return NavigationResult.IR_A_PAGINA_PRINCIPAL;
+		}
 	}
 
 	// evento de logout, invalida la sesión

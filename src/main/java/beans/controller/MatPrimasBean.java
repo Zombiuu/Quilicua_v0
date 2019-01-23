@@ -31,7 +31,7 @@ public class MatPrimasBean {
 
 		try {
 			this.matPrimasService.guardar(matPrimasDTO);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 					ResourceBundle.getBundle("/bundle/es_messages").getString("matprimas.guardar.exito"), null));
 		} catch (ServiceException se) {
 			logger.log(null, "Se ha producido un error al guardar la entidad MateriasPrimas");
