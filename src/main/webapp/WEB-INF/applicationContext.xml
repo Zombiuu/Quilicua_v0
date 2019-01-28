@@ -66,7 +66,7 @@
 				     <beans:value>beans.model.Menaje</beans:value>
 				     <beans:value>beans.model.Platos</beans:value>
 				     <beans:value>beans.model.Proporciones</beans:value>
-				      <beans:value>beans.model.Puestos</beans:value>
+				     <beans:value>beans.model.Puestos</beans:value>
 				     <beans:value>beans.model.RelEventoMenaje</beans:value>
 				     <beans:value>beans.model.RelEventoPlatos</beans:value>
 				     <beans:value>beans.model.RelEventoPuestos</beans:value>
@@ -76,6 +76,7 @@
 				     <beans:value>beans.model.RelPuestosElaboraciones</beans:value>
 				     <beans:value>beans.model.RelPuestosMaquinaria</beans:value>
 				     <beans:value>beans.model.RelPuestosMenaje</beans:value>
+				     <beans:value>beans.model.CatTipoMenaje</beans:value>
 				     
 				  
 				

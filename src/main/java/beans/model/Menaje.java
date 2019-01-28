@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,19 +28,22 @@ public class Menaje implements java.io.Serializable {
 	private Set<RelPuestosMenaje> relPuestosMenajes = new HashSet<RelPuestosMenaje>(0);
 	private Set<RelPlatosMenaje> relPlatosMenajes = new HashSet<RelPlatosMenaje>(0);
 	private Set<RelEventoMenaje> relEventoMenajes = new HashSet<RelEventoMenaje>(0);
+	private CatTipoMenaje tipoMenaje;
 
 	public Menaje() {
 	}
 
-	public Menaje(String nombre, String borrado) {
+	public Menaje(String nombre, String borrado, CatTipoMenaje tipoMenaje) {
 		this.nombre = nombre;
 		this.borrado = borrado;
+		this.tipoMenaje = tipoMenaje;
 	}
 
-	public Menaje(String nombre, String borrado, Set<RelPuestosMenaje> relPuestosMenajes,
+	public Menaje(String nombre, String borrado, CatTipoMenaje tipoMenaje, Set<RelPuestosMenaje> relPuestosMenajes,
 			Set<RelPlatosMenaje> relPlatosMenajes, Set<RelEventoMenaje> relEventoMenajes) {
 		this.nombre = nombre;
 		this.borrado = borrado;
+		this.tipoMenaje = tipoMenaje;
 		this.relPuestosMenajes = relPuestosMenajes;
 		this.relPlatosMenajes = relPlatosMenajes;
 		this.relEventoMenajes = relEventoMenajes;
@@ -69,9 +74,18 @@ public class Menaje implements java.io.Serializable {
 	public String getBorrado() {
 		return this.borrado;
 	}
-
 	public void setBorrado(String borrado) {
 		this.borrado = borrado;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "TIPO_MENAJE_FK")
+	public CatTipoMenaje getTipoMenaje() {
+		return this.tipoMenaje;
+	}
+
+	public void setTipoMenaje(CatTipoMenaje catTipoMenaje) {
+		this.tipoMenaje = catTipoMenaje;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "menaje")
